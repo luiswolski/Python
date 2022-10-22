@@ -20,7 +20,7 @@ class B(A):
 
 class C(B):
     attr_casses = 'Valor C'
-    
+
 
 c = C()
 print(c.attr_casses)
