@@ -10,18 +10,30 @@ else:
     comando_ffmpeg = r'ffmpeg\ffmpeg.exe'
 
 codec_video = '-c:v libx264'
-crf = '-crf 23'
-preset = '-preset ultrafast'
+crf = '-crf 20'
+preset = '-preset fast'
+"""
+This option itemizes a range of choices from veryfast (best speed) to veryslow (best quality).
+
+‘veryfast’
+‘faster’
+‘fast’
+‘medium’
+‘slow’
+‘slower’
+‘veryslow’
+
+"""
 codec_audio = '-c:a aac'
 bitrate_audio = '-b:a 320k'
-debug = '-ss 00:00:00 -to 00:00:20'
+debug = '-ss 00:02:52 -to 00:05:00'
 
 caminho_origem = r'D:\Fotos_test\filme1'
 caminho_destino = r'D:\Fotos_test2\filme2'
 
 for raiz, pastas, arquivos in os.walk(caminho_origem):
     for arquivo in arquivos:
-        if not fnmatch.fnmatch(arquivo, '*mkv'):
+        if not fnmatch.fnmatch(arquivo, '*mp4'):
             continue
 
         caminho_completo = os.path.join(raiz, arquivo)
