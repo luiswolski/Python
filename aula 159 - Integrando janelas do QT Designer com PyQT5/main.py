@@ -9,6 +9,9 @@ class Novo(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         super().setupUi(self)
+
+        self.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
+
         self.btnEscolherArquivo.clicked.connect(self.abrir_imagem)
         self.btnRedimensionar.clicked.connect(self.redimesionar)
         self.btnSalvar.clicked.connect(self.salvar)
