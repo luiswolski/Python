@@ -7,8 +7,11 @@ import string
 
 def valida_cpf(cpf):
     cpf = str(cpf)
+
     cpf = re.sub(r'[^0-9]', '', cpf)
 
+    if not cpf or len(cpf) != 11:
+        return False
 
     digitos = []
     cont1 = 0
