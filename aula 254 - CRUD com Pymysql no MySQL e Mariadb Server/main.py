@@ -1,6 +1,7 @@
 import pymysql.cursors
 from contextlib import contextmanager
 
+# CRUD - CREATE, READ, UPDATE, DELETE
 
 @contextmanager
 def conecta():
@@ -17,7 +18,7 @@ def conecta():
     finally:
         conexao.close()
 
-# COMO ADICIONAR UM DADO NO DB
+# ADICIONA UM DADO NO DB
 """
 with conecta() as conexao:
     with conexao.cursor() as cursor:
@@ -27,7 +28,7 @@ with conecta() as conexao:
         conexao.commit()
 """
 
-# COMO ADICIONAR MÚLTIPLUS DADOS NO DB
+# ADICIONAR MÚLTIPLUS DADOS NO DB
 """
 with conecta() as conexao:
     with conexao.cursor() as cursor:
@@ -54,14 +55,24 @@ with conecta() as conexao:
 """
 
 # APAGAR MULTIPLOS DADOS NO DB
-""""
+"""
 with conecta() as conexao:
     with conexao.cursor() as cursor:
         sql = 'DELETE FROM clientes WHERE id IN (%s, %s, %s)'
         cursor.execute(sql, (7, 8, 9))
         conexao.commit()
-""""
+"""
 
+# APAGAR UMA SEQUENCIA DE DADOS NO DB
+"""
+with conecta() as conexao:
+    with conexao.cursor() as cursor:
+        sql = 'DELETE FROM clientes WHERE id BETWEEN %s AND %s'
+        cursor.execute(sql, (10, 12))
+        conexao.commit()
+"""
+
+# SELECIONA OS DADOS NA DB
 with conecta() as conexao:
     with conexao.cursor() as cursor:
         cursor.execute('SELECT * FROM clientes ORDER BY id DESC LIMIT 100')
