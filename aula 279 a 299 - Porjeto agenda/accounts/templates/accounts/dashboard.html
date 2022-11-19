@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block title%}{{user}} dashboard  | {%endblock%}
+
+{% block content %}
+<h1 class="mt-3 mb-3">Hello {{ user.first_name }} {{ user.last_name }}</h1>
+{% include 'partials/_messages.html' %}
+
+<div class="container">
+    <form action="{%url 'dashboard'%}" method="POST" enctype="multipart/form-data">
+    </form>
+    <form action="{%url 'dashboard'%}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <table class="table">
+            {{form}}
+            <tr>
+                <td colspan="2" align="right">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{% endblock %}

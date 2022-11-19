@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <title>{%block title%}{%endblock%}Contact List</title>
+  {% include 'partials/_head.html'%}
+</head>
+
+<body>
+  {% include 'partials/_nav.html' %}
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <br><br>
+
+        {% if 'accounts' not in request.path %}
+        <form method="get" action="{% url 'search' %}">
+          <div class="form-group row">
+            <div class="col-12">
+              <input class="form-control"
+                     type="search" value="{{ request.GET.word }}"
+                     id="search-input"
+                     placeholder="Type your search"
+                     name="word">
+              {% include 'partials/_messages.html' %}
+
+            </div>
+          </div>
+        </form>
+        {% endif %}
+
+        {%block content%}{%endblock%}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.slim.min.js'%}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+</body>
+
+</html>
